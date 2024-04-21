@@ -1,0 +1,15 @@
+# add krew plugins
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# kubectx and kubens
+export PATH=~/.kubectx:$PATH
+
+# add gpg gui
+export GPG_TTY=$(tty)
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# load shell completions (zsh-completions)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
