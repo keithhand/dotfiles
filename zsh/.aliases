@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
 alias vim="$VIM"
+
 alias dotFileInstall="$DOTFILES/install"
+alias dp="dotFileInstall && source $HOME/.zshrc"
+genFileAliases "dotfile" "b" "zsh/.zsh_profile"
+genFileAliases "dotfile" "t" "tmux/.tmux.conf"
+genFileAliases "dotfile" "nv" "nvim/.config/nvim/init.lua"
