@@ -798,7 +798,7 @@ require("lazy").setup({
 	require("keithhand.neo-tree"),
 	vim.keymap.set("n", "<C-x>", "<Cmd>Neotree toggle<Cr>"),
 	require("keithhand.gitsigns"), -- adds gitsigns recommend keymaps
-
+	require("keithhand.catppuccin"),
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--
