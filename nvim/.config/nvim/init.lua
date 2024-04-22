@@ -792,13 +792,12 @@ require("lazy").setup({
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	--
 	-- require 'kickstart.plugins.debug',
-	require("keithhand.indent_line"),
 	-- require 'kickstart.plugins.lint',
-	require("keithhand.autopairs"),
-	require("keithhand.neo-tree"),
-	vim.keymap.set("n", "<C-x>", "<Cmd>Neotree toggle<Cr>"),
-	require("keithhand.gitsigns"), -- adds gitsigns recommend keymaps
-	require("keithhand.catppuccin"),
+	require("plugins.indent_line"),
+	require("plugins.autopairs"),
+	require("plugins.neo-tree"),
+	require("plugins.gitsigns"), -- adds gitsigns recommend keymaps
+	require("plugins.catppuccin"),
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
 	--
