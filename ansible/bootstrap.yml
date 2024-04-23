@@ -1,0 +1,60 @@
+- name: Bootstrap development environment
+  hosts: localhost
+  vars:
+    brew_paths:
+    - /home/linuxbrew/.linuxbrew/bin
+
+  tasks:
+    # Apt installs
+  - name: Install packages with apt
+    become: yes
+    ansible.builtin.apt:
+      name:
+        - docker
+        - gcc
+        - git
+        - nodejs
+        - npm
+        - python3
+        - tmux
+      state: present
+    when: ansible_distribution == "Debian"
+
+    # Homebrew installs
+  - name: Check for Homebrew install
+    find:
+      paths: "{{ brew_paths }}"
+      file_type: file
+      contains: brew
+    register: brew
+  - name: Install Homebrew
+    script: install-homebrew.sh
+    when: brew|length < 1
+  - name: Install [mac] packages with brew
+    community.general.homebrew:
+      name:
+        - docker
+        - gcc
+        - git
+        - nodejs
+        - npm
+        - python3
+        - tmux
+    when: ansible_distribution == "MacOSX"
+  - name: Install packages with brew
+    community.general.homebrew:
+      name:
+        - bat
+        - curl
+        - eza
+        - fd
+        - fzf
+        - kubernetes-cli
+        - neovim
+        - pipx
+        - powerlevel10k
+        - thefuck
+        - zoxide
+        - zsh
+        - zsh-autosuggestions
+        - zsh-fast-syntax-highlighting
