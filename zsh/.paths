@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-addToPathFront "$HOME/.local/scripts/"
-addToPathFront "$HOME/.kubectx"

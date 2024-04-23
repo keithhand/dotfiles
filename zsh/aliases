@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+export STOW_FOLDERS="home,nvim,tmux,zsh"
+export GPG_TTY=$(tty)
+
+genFileAliases() {
+  file="$DOTFILES/$3"
+  declare -A label
+  label[dotfile]="d"
+  alias "e$label[$1]$2"="$vim $file"
+  alias "c$label[$1]$2"="cat $file"
+}
+
+vim="nvim"
+alias vim="$vim"
+alias dotFileInstall="$DOTFILES/install"
+alias dp="dotFileInstall && source $XDG_CONFIG_HOME/.zshrc"
+genFileAliases "dotfile" "b" "zsh/.zsh_profile"
+genFileAliases "dotfile" "t" "tmux/.tmux.conf"
+genFileAliases "dotfile" "nv" "nvim/.config/nvim/init.lua"
+genFileAliases "dotfile" "nvk" "nvim/.config/nvim/lua/keithhand/keymappings.lua"

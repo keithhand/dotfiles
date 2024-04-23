@@ -1,58 +1,21 @@
-# Auto-attach to a tmux terminal, if necessary
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]
-then
-    default="tmux-default"
-    tmux attach -t $default &>/dev/null || tmux new -s $default
-    exit
-fi
+#!/usr/bin/env bash
 
-# Add homebrew to path
-if [[ ! -f $(which brew) ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# Fix zsh completions
-fpath=(/usr/local/share/zsh/site-functions $fpath)
-autoload -Uz compinit && compinit
-
-# Ctrl-f keybind for tmux-sessionizer
-bindkey -s ^f "tmux-sessionizer\n"
-
-# thefuck - oops
-eval $(thefuck --alias)
-eval $(thefuck --alias fk)
-
-# zoxide - better cd
-eval "$(zoxide init zsh --cmd cd)"
-
-
-# bat - cat with wings
-BAT_THEME="catppuccin-mocha"
-alias _cat="$(which cat)"
-alias cat="bat"
-
-# eza - custom ls
-unalias ls
-alias _ls="$(which ls)"
-alias ls="eza --color=always --icons=always --group-directories-first --across -w 170"
-alias ll="ls --long --smart-group --git --time-style=relative --header -X"
-alias lp="ll --tree --all --ignore-glob=.git --git-ignore --total-size"
-eza_preview='eza --tree --color=always --all --ignore-glob=.git {} | head -200'
-
-# fzf - fuzzy-find
+# init
 eval "$(fzf --zsh)"
+
 # theme
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
-# add fd for better fzf searches
+
+# use fd for better fzf searches
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-# add bat for better previews
+
+# customize search commands
 bat_preview='bat -n --color=always --line-range :500 {}'
-# keymappings
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_T_OPTS="--preview '$bat_preview'"
+eza_preview='eza --tree --color=always --all --ignore-glob=.git {} | head -200'
+
 # fix "**" entries
 # Use fd (https://github.com/sharkdp/fd) for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -64,6 +27,7 @@ _fzf_compgen_path() {
 _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
+
 # configure specific command responses
 # Advanced customization of fzf options via _fzf_comprun function
 # - The first argument to the function is the name of the command.
@@ -78,3 +42,7 @@ _fzf_comprun() {
     *)            fzf --preview $bat_preview       "$@" ;;
   esac
 }
+
+# key mappings
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="--preview '$bat_preview'"

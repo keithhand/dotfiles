@@ -1,9 +1,14 @@
 #!/usr/bin/env zsh
+set -e
 pushd $DOTFILES
 for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
 do
-    echo "stow $folder"
-    stow -D $folder
-    stow $folder -t "$HOME"
+    echo "stowing $folder"
+    if [[ $folder == "home" ]]; then
+        target_dir=$HOME
+    else
+        target_dir="$XDG_CONFIG_HOME/$folder"
+    fi
+    mkdir -p $target_dir && stow --target $target_dir --restow $folder 1&> /dev/null
 done
 popd
