@@ -1,9 +1,8 @@
 # Auto-attach to a tmux terminal, if necessary
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]
 then
-    default="tmux-default"
-    tmux attach -t $default &>/dev/null || tmux new -s $default
-#    exit
+    default="default"
+    tmux new \; set-option destroy-unattached;
 fi
 
 # moved to plugins
