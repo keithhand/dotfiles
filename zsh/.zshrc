@@ -3,6 +3,7 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]
 then
     default="default"
     tmux new \; set-option destroy-unattached;
+    exit
 fi
 
 # moved to plugins
