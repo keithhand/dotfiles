@@ -21,6 +21,15 @@ source $zsh_config_dir/paths
 setopt HIST_SAVE_NO_DUPS
 setopt globdots
 
+# key mappings
+## binds up and down arrow keys to history functions
+## then appends cursor to the end of the selection
+autoload -U history-search-end
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "^[[A" history-beginning-search-backward-end
+bindkey "^[[B" history-beginning-search-forward-end
+
 # zsh autocompletions
 autoload -Uz compinit
 fpath=(/srv/git/zsh-users/zsh-completions/src $fpath)
