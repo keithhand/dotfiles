@@ -6,10 +6,9 @@ then
     exit
 fi
 
-
-zsh_config="$XDG_CONFIG_HOME/zsh"
-source $zsh_config/aliases
-source $zsh_config/paths
+zsh_config_dir="$XDG_CONFIG_HOME/zsh/"
+source $zsh_config_dir/aliases
+source $zsh_config_dir/paths
 
 # zsh options
 setopt HIST_SAVE_NO_DUPS
