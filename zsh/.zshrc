@@ -19,13 +19,13 @@ source $zsh_config_dir/paths
 
 # zsh options
 setopt HIST_SAVE_NO_DUPS
+setopt globdots
 
 # zsh autocompletions
 autoload -Uz compinit
 fpath=(/srv/git/zsh-users/zsh-completions/src $fpath)
 compdump=$XDG_DATA_HOME/zsh/.zcompdump
 rm -f $compdump && compinit -d $compdump
-_comp_options+=(globdots) # With hidden files
 
 # Lazy load all plugins
 for f in $XDG_CONFIG_HOME/zsh/plugins/*; do

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 source $(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config//zsh//.zshrc.
