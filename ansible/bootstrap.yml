@@ -33,7 +33,7 @@
   - name: Install [mac] packages with brew
     community.general.homebrew:
       name:
-        - docker
+        - homebrew/cask/docker
         - gcc
         - git
         - nodejs

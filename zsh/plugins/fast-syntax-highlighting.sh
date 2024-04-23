@@ -9,7 +9,7 @@ theme_path=$XDG_CONFIG_HOME/fsh
 if [[ ! -f $theme_path/$file_name ]]; then
   echo "missing zsh-fsh theme... downloading..."
   mkdir -p $theme_path
-  wget -q $theme_url --output-document $theme_path/$file_name
+  curl -q $theme_url --output $theme_path/$file_name
   echo "downloaded... updating theme..."
   fast-theme XDG:catppuccin-mocha
 fi

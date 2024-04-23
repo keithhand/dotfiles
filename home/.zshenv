@@ -18,3 +18,10 @@ export SAVEHIST=10000
 export GIT_DIRECTORY=/srv/git/
 export GIT_EDITOR="$EDITOR"
 export DOTFILES="$HOME/.dotfiles/"
+
+# Brew path
+if [[ $(uname) == "Darwin" ]]; then
+  export BREW_PREFIX="/opt/homebrew"
+elif [[ $(uname) == "Linux" ]]; then
+  export BREW_PREFIX="/home/linuxbrew/.linuxbrew"
+fi
