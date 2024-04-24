@@ -1,8 +1,16 @@
 #!/usr/bin/env zsh
 set -e
-pushd $DOTFILES
-for folder in $(echo $STOW_FOLDERS | sed "s/,/ /g")
-do
+
+workdir=$(dirname $0)
+distro=$(uname)
+if [[ $distro == "Darwin" ]]; then
+    stow_folders=$workdir/env/mac
+elif [[ $distro == "Linux" ]]; then
+    stow_folders=$workdir/env/debian
+fi
+
+pushd $workdir
+while read folder; do
     echo "stowing $folder"
     if [[ $folder == "home" ]]; then
         target_dir=$HOME
@@ -10,5 +18,5 @@ do
         target_dir="$XDG_CONFIG_HOME/$folder"
     fi
     mkdir -p $target_dir && stow --target $target_dir --restow $folder 1&> /dev/null
-done
+done < $stow_folders
 popd

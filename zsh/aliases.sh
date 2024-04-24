@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export STOW_FOLDERS="home,nvim,tmux,zsh"
-
 alias vim="nvim"
 alias dotFileInstall="$DOTFILES/install"
 alias rz="source $XDG_CONFIG_HOME/zsh/.zshrc"

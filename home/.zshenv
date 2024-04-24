@@ -6,12 +6,12 @@ export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 set -o vi
 setopt globdots
 setopt HIST_SAVE_NO_DUPS
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh/"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # Distro specific
 distro=$(uname)
 if [[ $distro == "Darwin" ]]; then
-  export GIT_DIRECTORY=$HOME/git
+  export GIT_DIRECTORY=$HOME/gh
   export HOMEBREW_PREFIX="/opt/homebrew"
 elif [[ $distro == "Linux" ]]; then
   export GIT_DIRECTORY=/srv/git
@@ -24,7 +24,7 @@ export EDITOR="$text_editor"
 export VISUAL="$text_editor"
 export GIT_EDITOR="$EDITOR"
 export GPG_TTY=$(tty)
-export DOTFILES="$HOME/.dotfiles/"
+export DOTFILES="$HOME/.dotfiles"
 
 # Add homebrew to path
 if [[ ! -f $(which brew) ]]; then
