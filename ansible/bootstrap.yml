@@ -58,3 +58,7 @@
         - zsh
         - zsh-autosuggestions
         - zsh-fast-syntax-highlighting
+  - name: Install Tmux Plugin Manager
+    git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: ~/.tmux/plugins/tpm
