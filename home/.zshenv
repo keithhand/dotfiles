@@ -23,7 +23,6 @@ text_editor="vim"
 export EDITOR="$text_editor"
 export VISUAL="$text_editor"
 export GIT_EDITOR="$EDITOR"
-export GPG_TTY=$(tty)
 export DOTFILES="$HOME/.dotfiles"
 
 # Add homebrew to path
