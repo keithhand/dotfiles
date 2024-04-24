@@ -13,18 +13,13 @@ export SAVEHIST=10000
 export THEME="catppuccin-mocha"
 
 # sourcing
-source $ZDOTDIR/paths.sh
-source $ZDOTDIR/keymappings.sh
-source $ZDOTDIR/aliases.sh
+source $ZDOTDIR/helpers.sh
 
 # Lazy load all plugins
 for f in $XDG_CONFIG_HOME/zsh/plugins/*; do
   source $f
 done
 
-# Footer prompt
-function _bottom_prompt {
-  tput cup $(($LINES-1)) 0
-}
-add-zsh-hook precmd _bottom_prompt
-alias clear="clear && _bottom_prompt"
+source $ZDOTDIR/paths.sh
+source $ZDOTDIR/keymappings.sh
+source $ZDOTDIR/aliases.sh

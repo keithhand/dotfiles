@@ -11,3 +11,13 @@ fi
 
 # To customize prompt, run `p10k configure` or edit ~/.config//zsh//.p10k.zsh.
 [[ ! -f ~/.config//zsh//.p10k.zsh ]] || source ~/.config//zsh//.p10k.zsh
+
+# Footer prompt
+function _bottom_prompt {
+  tput cup $(($LINES-1)) 2
+}
+# Catch window resize
+trap '_bottom_prompt' WINCH
+# Catch after canceling command that moves prompt
+add-zsh-hook precmd _bottom_prompt
+alias clear="clear && _bottom_prompt"
