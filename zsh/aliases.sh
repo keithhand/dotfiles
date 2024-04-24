@@ -9,7 +9,8 @@ git_clone() {
   url=$1
   author=$(basename $(dirname $url))
   repo=$(basename $url .git)
-  git clone -q $url $GIT_DIRECTORY/$author/$repo
+  output_dir=$GIT_DIRECTORY/$author/$repo
+  git clone -q $url $output_dir
 }
 
 genFileAliases() {

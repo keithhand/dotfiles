@@ -6,8 +6,9 @@ if [[ $(uname) == "Darwin" ]]; then
   defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
   # Set up theme
-  theme_name="catppuccin-$CATPPUCCIN_THEME.itermcolors"
+  theme_name="$THEME.itermcolors"
   if [[ ! -f $XDG_CONFIG_HOME/iterm2/$theme_name ]]; then
+    echo "missing iterm2 theme... downloading..."
     git_clone https://github.com/catppuccin/iterm.git 2>/dev/null
     cp $GIT_DIRECTORY/$author/$repo/colors/$theme_name $XDG_CONFIG_HOME/iterm2
   fi
