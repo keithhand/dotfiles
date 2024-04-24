@@ -6,7 +6,6 @@ then
     exit
 fi
 
-
 mkdir -p "$XDG_DATA_HOME/zsh"
 export HISTFILE="$XDG_DATA_HOME/zsh/.zhistory"
 export HISTSIZE=10000
@@ -18,9 +17,9 @@ for f in $XDG_CONFIG_HOME/zsh/plugins/*; do
 done
 
 # sourcing
-source $ZDOTDIR/aliases
-source $ZDOTDIR/paths
-source $ZDOTDIR/keymappings
+source $ZDOTDIR/aliases.sh
+source $ZDOTDIR/paths.sh
+source $ZDOTDIR/keymappings.sh
 
 # Footer prompt
 function _bottom_prompt {
