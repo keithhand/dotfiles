@@ -6,15 +6,21 @@ then
     exit
 fi
 
-# sourcing
-zsh_config_dir="$XDG_CONFIG_HOME/zsh/"
-source $zsh_config_dir/aliases
-source $zsh_config_dir/paths
+
+mkdir -p "$XDG_DATA_HOME/zsh"
+export HISTFILE="$XDG_DATA_HOME/zsh/.zhistory"
+export HISTSIZE=10000
+export SAVEHIST=10000
 
 # Lazy load all plugins
 for f in $XDG_CONFIG_HOME/zsh/plugins/*; do
   source $f
 done
+
+# sourcing
+source $ZDOTDIR/aliases
+source $ZDOTDIR/paths
+source $ZDOTDIR/keymappings
 
 # Footer prompt
 function _bottom_prompt {
@@ -22,18 +28,3 @@ function _bottom_prompt {
 }
 add-zsh-hook precmd _bottom_prompt
 alias clear="clear && _bottom_prompt"
-
-# zsh options
-setopt HIST_SAVE_NO_DUPS
-setopt globdots
-
-# key mappings
-## binds up and down arrow keys to history functions
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
-
-# zsh autocompletions
-autoload -Uz compinit
-fpath=(/srv/git/zsh-users/zsh-completions/src $fpath)
-compdump=$XDG_DATA_HOME/zsh/.zcompdump
-rm -f $compdump && compinit -d $compdump

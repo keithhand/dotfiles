@@ -18,8 +18,3 @@ _addToPathFront "$HOME/.local/scripts"
 _addToPathFront "$HOME/.kubectx"
 _addToPath "/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
 _addToPath "/mnt/c/Users/rkeit/AppData/Local/Programs/Microsoft VS Code/bin"
-
-# Add homebrew to path
-if [[ ! -f $(which brew) ]]; then
-  eval "$($BREW_PREFIX/bin/brew shellenv)"
-fi
