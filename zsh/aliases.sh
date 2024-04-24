@@ -5,6 +5,13 @@ alias dotFileInstall="$DOTFILES/install"
 alias rz="source $XDG_CONFIG_HOME/zsh/.zshrc"
 alias dp="dotFileInstall && rz"
 
+git_clone() {
+  url=$1
+  author=$(basename $(dirname $url))
+  repo=$(basename $url .git)
+  git clone -q $url $GIT_DIRECTORY/$author/$repo
+}
+
 genFileAliases() {
   declare -A label
   label[dotfile]="d"
