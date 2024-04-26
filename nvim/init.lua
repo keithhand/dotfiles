@@ -1,9 +1,3 @@
--- Set default spacing to 2 if none is recognized
-vim.opt.expandtab = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -800,7 +794,6 @@ require("lazy").setup({
 	--  Uncomment any of the lines below to enable them (you will need to restart nvim).
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.lint',
-	require("keithhand.keymappings"),
 
 	-- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
 	--    This is the easiest way to modularize your config.
@@ -830,5 +823,6 @@ require("lazy").setup({
 	},
 })
 
+require("keithhand")
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
