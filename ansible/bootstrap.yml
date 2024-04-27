@@ -7,6 +7,7 @@
   tasks:
     # Apt installs
   - name: Install packages with apt
+    when: ansible_distribution == "Debian"
     become: yes
     ansible.builtin.apt:
       name:
@@ -18,7 +19,6 @@
         - python3
         - tmux
       state: present
-    when: ansible_distribution == "Debian"
 
     # Homebrew installs
   - name: Check for Homebrew install
@@ -28,9 +28,10 @@
       contains: brew
     register: brew
   - name: Install Homebrew
-    script: install-homebrew.sh
     when: brew|length < 1
+    script: install-homebrew.sh
   - name: Install [mac] packages with brew
+    when: ansible_distribution == "MacOSX"
     community.general.homebrew:
       name:
         - homebrew/cask/docker
@@ -40,7 +41,7 @@
         - npm
         - python3
         - tmux
-    when: ansible_distribution == "MacOSX"
+        - syncthing
   - name: Install packages with brew
     community.general.homebrew:
       name:
