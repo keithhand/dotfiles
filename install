@@ -4,19 +4,27 @@ set -e
 workdir=$(dirname $0)
 distro=$(uname)
 if [[ $distro == "Darwin" ]]; then
-    stow_folders=$workdir/env/mac
+    stow_config=$workdir/env/mac
 elif [[ $distro == "Linux" ]]; then
-    stow_folders=$workdir/env/debian
+    stow_config=$workdir/env/debian
 fi
 
+
+stow_folders+=(
+    "home"
+    "ansible"
+)
+while IFS= read -r line; do stow_folders+=($line); done < "$stow_config"
+
 pushd $workdir
-while read folder; do
+for folder in $stow_folders
+do
     echo "stowing $folder"
     if [[ $folder == "home" ]]; then
         target_dir=$HOME
     else
         target_dir="$XDG_CONFIG_HOME/$folder"
     fi
-    mkdir -p $target_dir && stow --target $target_dir --restow $folder 1&> /dev/null
-done < $stow_folders
+    mkdir -p $target_dir && stow --target $target_dir --restow $folder
+done
 popd
