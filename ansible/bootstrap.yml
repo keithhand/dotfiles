@@ -41,7 +41,7 @@
         - npm
         - python3
         - tmux
-        - syncthing
+        - homebrew/cask/syncthing
   - name: Install packages with brew
     community.general.homebrew:
       name:
@@ -62,4 +62,4 @@
   - name: Install Tmux Plugin Manager
     git:
       repo: https://github.com/tmux-plugins/tpm
-      dest: ~/.tmux/plugins/tpm
+      dest: ~/.config/tmux/plugins/tpm

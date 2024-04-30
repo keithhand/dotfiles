@@ -9,11 +9,8 @@ elif [[ $distro == "Linux" ]]; then
     stow_config=$workdir/env/debian
 fi
 
-
-stow_folders+=(
-    "home"
-    "ansible"
-)
+stow_folders=()
+while IFS= read -r line; do stow_folders+=($line); done < "$workdir/env/default"
 while IFS= read -r line; do stow_folders+=($line); done < "$stow_config"
 
 pushd $workdir
