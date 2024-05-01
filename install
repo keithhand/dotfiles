@@ -19,9 +19,11 @@ do
     echo "stowing $folder"
     if [[ $folder == "home" ]]; then
         target_dir=$HOME
+        stow_flag="--stow"
     else
         target_dir="$XDG_CONFIG_HOME/$folder"
+        stow_flag="--restow"
     fi
-    mkdir -p $target_dir && stow --target $target_dir --restow $folder
+    mkdir -p "$target_dir" && stow --target "$target_dir" "$stow_flag" "$folder"
 done
 popd
