@@ -1,9 +1,0 @@
-[user]
-	email = 43491549+keithhand@users.noreply.github.com
-	name = keith.hand
-[core]
-	editor = vim
-[init]
-	defaultBranch = main
-[commit]
-	gpgsign = true
