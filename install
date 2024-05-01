@@ -1,29 +1,27 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 set -e
 
-workdir=$(dirname $0)
+workdir=$(dirname "$0")
 distro=$(uname)
 if [[ $distro == "Darwin" ]]; then
-    stow_config=$workdir/env/mac
+	stow_config=$workdir/env/mac
 elif [[ $distro == "Linux" ]]; then
-    stow_config=$workdir/env/debian
+	stow_config=$workdir/env/debian
 fi
 
-stow_folders=()
-while IFS= read -r line; do stow_folders+=($line); done < "$workdir/env/default"
-while IFS= read -r line; do stow_folders+=($line); done < "$stow_config"
-
-pushd $workdir
-for folder in $stow_folders
-do
-    echo "stowing $folder"
-    if [[ $folder == "home" ]]; then
-        target_dir=$HOME
-        stow_flag="--stow"
-    else
-        target_dir="$XDG_CONFIG_HOME/$folder"
-        stow_flag="--restow"
-    fi
-    mkdir -p "$target_dir" && stow --target "$target_dir" "$stow_flag" "$folder"
+declare -a stow_folders
+while IFS= read -r line; do stow_folders+=("$line"); done <"$workdir/env/default"
+while IFS= read -r line; do stow_folders+=("$line"); done <"$stow_config"
+pushd "$workdir" >/dev/null
+for folder in "${stow_folders[@]}"; do
+	echo "stowing $folder"
+	if [[ $folder == "home" ]]; then
+		target_dir=$HOME
+		stow_flag="--stow"
+	else
+		target_dir="$XDG_CONFIG_HOME/$folder"
+		stow_flag="--restow"
+	fi
+	mkdir -p "$target_dir" && stow --target "$target_dir" "$stow_flag" "$folder"
 done
-popd
+popd >/dev/null
