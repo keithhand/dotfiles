@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 # eza - custom ls
+# shellcheck disable=SC2139
 alias lso="$(which ls)"
-alias ls="eza --color=always --icons=always --group-directories-first --across -w 170"
-alias ll="ls --long --smart-group --git --time-style=relative --header -X"
+alias ls="eza --color=auto --icons=auto --group-directories-first --across -w 170"
+alias ll="ls --long -g --smart-group --git --time-style=relative --header -F"
 alias la="ll --all"
-alias lp="ll --tree --all --ignore-glob=.git --git-ignore --total-size"
+alias lp="la --tree --ignore-glob=.git --git-ignore --total-size"
