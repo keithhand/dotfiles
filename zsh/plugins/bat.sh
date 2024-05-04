@@ -12,5 +12,5 @@ if [[ ! -f $theme_dir/$full_theme_name ]]; then
 fi
 
 export BAT_THEME="$theme_name"
-alias cato="$(which cat)"
+alias cato >/dev/null 2>&1 || alias cato="$(which cat)"
 alias cat="bat"
