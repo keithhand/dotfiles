@@ -14,10 +14,8 @@ fi
 
 # Footer prompt
 function _bottom_prompt {
-  tput cup $(($LINES-1)) 2
+  tput cup 9999 0
+  p10k display -r
 }
-# Catch window resize
-trap '_bottom_prompt' WINCH
-# Catch after canceling command that moves prompt
+trap _bottom_prompt WINCH
 add-zsh-hook precmd _bottom_prompt
-alias clear="clear && _bottom_prompt"

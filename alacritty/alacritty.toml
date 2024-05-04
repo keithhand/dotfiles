@@ -1,0 +1,23 @@
+import = [
+  "~/.config/alacritty/themes/catppuccin-mocha.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[window]
+padding = { x = 5, y = 5 }
+dynamic_padding = true
+opacity = 0.9
+
+[font]
+normal = { family = "IosevkaTerm Nerd Font Mono", style = "Thin" }
+italic = { style = "Thin Italic" }
+bold = { style = "Light" }
+bold_italic = { style = "Light Italic" }
+size = 13.9
+offset = { x = 3, y = 0 }
+glyph_offset = { x = 1, y = 0 }
+
+[selection]
+save_to_clipboard = true
