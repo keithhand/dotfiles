@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
+declare -a directories=(
+	"$(find "$GIT_DIRECTORY/keithhand" -mindepth 1 -maxdepth 1 -type d)"
+)
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find "$GIT_DIRECTORY/keithhand" -mindepth 1 -maxdepth 1 -type d | fzf)
+	selected=$(printf '%s\n' "${directories[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -11,15 +14,10 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-tmux_running=$(pgrep tmux)
-
-if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-	tmux new-session -s "$selected_name" -c "$selected"
-	exit 0
+pushd "$selected" 1>/dev/null || exit
+if [ -f './.tmuxinator.yml' ]; then
+	tmuxinator local
+else
+	tmuxinator start sessionizer name="$selected_name" workspace="$selected"
 fi
-
-if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-	tmux new-session -ds "$selected_name" -c "$selected"
-fi
-
-tmux switch-client -t "$selected_name"
+popd 1>/dev/null || exit

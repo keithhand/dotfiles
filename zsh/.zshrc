@@ -1,8 +1,3 @@
-if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
-	tmux new \; set-option destroy-unattached
-	exit
-fi
-
 source "$ZDOTDIR/environment.sh"
 source "$ZDOTDIR/helpers.sh"
 

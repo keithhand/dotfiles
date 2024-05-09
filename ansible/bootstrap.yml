@@ -55,6 +55,7 @@
         - pipx
         - powerlevel10k
         - thefuck
+        - tmuxinator
         - zoxide
         - zsh
         - zsh-autosuggestions

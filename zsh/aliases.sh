@@ -5,6 +5,8 @@ alias dotFileInstall='$DOTFILES/install'
 alias rz='source $XDG_CONFIG_HOME/zsh/.zshrc'
 alias dp="dotFileInstall && rz"
 alias dc="docker-compose"
+alias tf="terraform"
+alias mux="tmuxinator"
 
 genFileAliases() {
 	declare -A label

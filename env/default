@@ -2,6 +2,7 @@ home
 ansible
 nvim
 tmux
+tmuxinator
 zsh
 npm
 alacritty
