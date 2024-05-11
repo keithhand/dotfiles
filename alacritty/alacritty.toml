@@ -9,13 +9,14 @@ TERM = "xterm-256color"
 padding = { x = 5, y = 5 }
 dynamic_padding = true
 opacity = 0.9
+startup_mode = "Maximized"
 
 [font]
 normal = { family = "IosevkaTerm Nerd Font Mono", style = "Thin" }
 italic = { style = "Thin Italic" }
 bold = { style = "Light" }
 bold_italic = { style = "Light Italic" }
-size = 13.9
+size = 20
 offset = { x = 3, y = 0 }
 glyph_offset = { x = 1, y = 0 }
 

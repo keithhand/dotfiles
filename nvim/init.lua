@@ -279,7 +279,7 @@ require("lazy").setup({
 				-- },
 				pickers = {
 					find_files = {
-						find_command = { "fd", "--hidden", "--strip-cwd-prefix", "--exclude", ".git" },
+						find_command = { "fd", "--strip-cwd-prefix", "--exclude", ".git" },
 					},
 				},
 				extensions = {
