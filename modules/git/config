@@ -3,7 +3,8 @@
 	email = 43491549+keithhand@users.noreply.github.com
 	signingkey = ~/.ssh/github.pub
 [core]
-	editor = vim
+	editor = nvim
+	excludesfile = /Users/keithhand/.config/git/ignore
 [init]
 	defaultBranch = main
 [commit]
