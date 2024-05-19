@@ -12,6 +12,6 @@ return {
 		})
 		vim.keymap.set("n", "<leader>g", function()
 			gitui:toggle()
-		end, {})
+		end, { desc = "Open Lazy[g]it" })
 	end,
 }

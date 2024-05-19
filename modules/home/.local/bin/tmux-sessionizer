@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 declare -a directories=(
-	"$(find "$GIT_DIRECTORY/keithhand" -mindepth 1 -maxdepth 1 -type d)"
+	"$(
+		find \
+			"$GIT_DIRECTORY/keithhand" \
+			-mindepth 1 -maxdepth 1 -type d
+	)"
+	"$OBSIDIAN_DIRECTORY"
 )
 if [[ $# -eq 1 ]]; then
 	selected=$1

@@ -21,15 +21,6 @@
       state: present
 
     # Homebrew installs
-  - name: Check for Homebrew install
-    find:
-      paths: "{{ brew_paths }}"
-      file_type: file
-      contains: brew
-    register: brew
-  - name: Install Homebrew
-    when: brew|length < 1
-    script: install-homebrew.sh
   - name: Install [mac] packages with brew
     when: ansible_distribution == "MacOSX"
     community.general.homebrew:
@@ -47,11 +38,12 @@
     community.general.homebrew:
       name:
         - bat
+        - commitizen
         - curl
         - eza
-        - fd
         - fzf
         - kubernetes-cli
+        - lazygit
         - neovim
         - pipx
         - powerlevel10k

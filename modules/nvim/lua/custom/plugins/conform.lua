@@ -25,7 +25,6 @@ return { -- Autoformat
 		end,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			markdown = { "mdformat" },
 			sh = { "shfmt" },
 			zsh = { "shfmt" },
 			-- Conform can also run multiple formatters sequentially

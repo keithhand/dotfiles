@@ -25,7 +25,3 @@ pre-configured $DOTFILES environment variable:
     - eda - edit dotfiles aliases
   - c{t}{f} - cat {type} {file}
     - cda - cat dotfiles aliases
-
-## To-Do
-
-- split modules into their own directory

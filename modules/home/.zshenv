@@ -24,6 +24,7 @@ export EDITOR="$text_editor"
 export VISUAL="$text_editor"
 export GIT_EDITOR="$EDITOR"
 export DOTFILES="$HOME/.dotfiles"
+export OBSIDIAN_DIRECTORY="$HOME/obsidian/Personal Vault/"
 
 # Add homebrew to path
 if [[ ! -f $(which brew) ]]; then
