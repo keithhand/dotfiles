@@ -37,6 +37,7 @@
         - homebrew/cask/docker
         - gcc
         - git
+        - lazygit
         - nodejs
         - npm
         - python3

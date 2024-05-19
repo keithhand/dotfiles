@@ -8,6 +8,7 @@ alias db='ansible-playbook --ask-become-pass $DOTFILES/ansible/bootstrap.yml && 
 alias dc="docker-compose"
 alias tf="terraform"
 alias mux="tmuxinator"
+alias lg="lazygit"
 
 genFileAliases() {
 	declare -A label
