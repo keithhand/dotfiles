@@ -1,6 +1,7 @@
 return {
 	{
 		"christoomey/vim-tmux-navigator",
+		event = "VimEnter",
 		cmd = {
 			"TmuxNavigateLeft",
 			"TmuxNavigateDown",
