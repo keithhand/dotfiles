@@ -11,11 +11,11 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 # Distro specific
 distro=$(/usr/bin/env uname)
 if [[ $distro == "Darwin" ]]; then
-  export GIT_DIRECTORY=$HOME/gh
-  export HOMEBREW_PREFIX="/opt/homebrew"
+	export GIT_DIRECTORY=$HOME/gh
+	export HOMEBREW_PREFIX="/opt/homebrew"
 elif [[ $distro == "Linux" ]]; then
-  export GIT_DIRECTORY=/srv/git
-  export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
+	export GIT_DIRECTORY=/srv/git
+	export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 fi
 
 # Evironment variables
@@ -28,5 +28,5 @@ export OBSIDIAN_DIRECTORY="$HOME/obsidian/Personal Vault/"
 
 # Add homebrew to path
 if [[ ! -f $(which brew) ]]; then
-  eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
+	eval "$("$HOMEBREW_PREFIX"/bin/brew shellenv)"
 fi
