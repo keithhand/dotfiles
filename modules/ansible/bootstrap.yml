@@ -28,6 +28,7 @@
         - homebrew/cask/docker
         - gcc
         - git
+        - gh
         - lazygit
         - nodejs
         - npm
