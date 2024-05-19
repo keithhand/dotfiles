@@ -5,5 +5,9 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"sindrets/diffview.nvim", -- optional - Diff integration
 	},
-	config = true,
+	config = function()
+		local neogit = require("neogit")
+		neogit.setup()
+		vim.keymap.set("n", "<leader>g", neogit.open, { desc = "Open Neo[g]it" })
+	end,
 }
