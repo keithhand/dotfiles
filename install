@@ -19,6 +19,6 @@ for folder in "${stow_folders[@]}"; do
 		target_dir="$XDG_CONFIG_HOME/$folder"
 		stow_flag="--restow"
 	fi
-	mkdir -p "$target_dir" && stow --target "$target_dir" "$stow_flag" "$folder"
+	mkdir -p "$target_dir" && stow --dotfiles --target "$target_dir" "$stow_flag" "$folder"
 done
 popd >/dev/null

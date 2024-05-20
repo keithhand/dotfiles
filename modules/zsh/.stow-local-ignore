@@ -1,2 +1,2 @@
-# symlink to ../home/.zshenv
+# symlink to ../home/dot-zshenv
 .zshenv
