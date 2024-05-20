@@ -1,27 +1,43 @@
 # dotfiles
 
-My personal dotfiles repo. Requires stow to manage symlinks.
+My personal dotfiles repo containing my local configuration and a way to sync
+it all.
 
-## Installation
+## Quick Setup
 
-Update the files under the `env/` directory for the desired environment (i.e.
-`env/default` and `env/mac`) and run the installation script.
+Verify the modules to sync are [configured](./env) and run the install script.
 
 ```sh
 ./install
 ```
 
-## Updating
+## Overview
 
-Some aliases are configured to edit and update the configuration based on a
-pre-configured $DOTFILES environment variable:
+[Modules](./modules/) are symlinked using `stow` to the `$XDG_CONFIG_HOME`
+directory (`~/.config`). The modules that get synced is set based on the
+[configuration file](./env) within the repo. This system helps be specific
+about which modules get stored, but comes at the cost that files created within
+the repository need to be resynced by running the install script after creation
+to create an initial symlink. Shortcuts are configured to assist with that
+process described in more detail [below](#shortcuts).
 
-- dotFileInstall - run install script (good for new files)
-- dp - run dotFileInstall and resources zsh files (good for updates)
-- db - run ansible/bootstrap.yml playbook and dp (good to make sure everything
+## Requirements
+
+- stow - symlinks modules
+- ansible - installs any tools
+- brew - package manager used with ansible
+
+## Shortcuts
+
+Some aliases are configured to edit and update configuration based on a
+configured `$DOTFILES` environment variable:
+
+- `dotFileInstall` - run install script (good for new files)
+- `dp` - run dotFileInstall and resources zsh files (good for updates)
+- `db` - run the ansible.yml playbook and `dp` (good to make sure everything
   is installed)
-- some auto generated aliases created with `genFileAliases()`
-  - e{t}{f} - edit {type} {file}
-    - eda - edit dotfiles aliases
-  - c{t}{f} - cat {type} {file}
-    - cda - cat dotfiles aliases
+- some auto generated aliases get created with `genFileAliases()`
+  - `e{t}{f}` - edit {type} {file}
+    - `eda` - edit dotfiles aliases
+  - `c{t}{f}` - cat {type} {file}
+    - `cda` - cat dotfiles aliases
