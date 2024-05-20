@@ -2,16 +2,13 @@
 set -e
 
 workdir=$(dirname "$0")
-distro=$(uname)
-if [[ $distro == "Darwin" ]]; then
-	stow_config=$workdir/env/mac
-elif [[ $distro == "Linux" ]]; then
-	stow_config=$workdir/env/debian
-fi
-
+stow_config=$workdir/env
 declare -a stow_folders
-while IFS= read -r line; do stow_folders+=("$line"); done <"$workdir/env/default"
-while IFS= read -r line; do stow_folders+=("$line"); done <"$stow_config"
+
+while IFS= read -r line; do
+	stow_folders+=("$line")
+done <"$stow_config"
+
 pushd "$workdir/modules" >/dev/null
 for folder in "${stow_folders[@]}"; do
 	echo "stowing $folder"
