@@ -12,6 +12,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 distro=$(/usr/bin/env uname)
 if [[ $distro == "Darwin" ]]; then
 	export GIT_DIRECTORY=$HOME/gh
+	export OBSIDIAN_DIRECTORY="$HOME/obsidian/Personal Vault/"
 	export HOMEBREW_PREFIX="/opt/homebrew"
 elif [[ $distro == "Linux" ]]; then
 	export GIT_DIRECTORY=/srv/git
