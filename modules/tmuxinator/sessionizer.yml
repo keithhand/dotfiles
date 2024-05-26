@@ -1,8 +1,7 @@
 # /Users/keithhand/.config/tmuxinator/sessionizer.yml
 
-pre_window: alias cd='HOME=<%= @settings["workspace"] %> cd'
 name: <%= @settings["name"] %>
 root: <%= @settings["workspace"] %>
 
 windows:
-  - editor: vim
+  - editor: vim && exit
