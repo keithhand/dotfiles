@@ -11,6 +11,7 @@
     become: yes
     ansible.builtin.apt:
       name:
+        - curl
         - docker
         - gcc
         - git
@@ -40,7 +41,6 @@
       name:
         - bat
         - commitizen
-        - curl
         - eza
         - fzf
         - kubernetes-cli
