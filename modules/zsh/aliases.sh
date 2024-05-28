@@ -9,6 +9,7 @@ alias dc="docker-compose"
 alias tf="terraform"
 alias mux="tmuxinator"
 alias lg="lazygit"
+alias buu="brew update && brew upgrade && brew cleanup"
 
 genFileAliases() {
 	declare -A label
