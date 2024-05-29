@@ -12,7 +12,6 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 distro=$(/usr/bin/env uname)
 if [[ $distro == "Darwin" ]]; then
 	export GIT_DIRECTORY=$HOME/gh
-	export OBSIDIAN_DIRECTORY="$HOME/obsidian/Personal Vault/"
 	export HOMEBREW_PREFIX="/opt/homebrew"
 elif [[ $distro == "Linux" ]]; then
 	export GIT_DIRECTORY=/srv/git
@@ -25,7 +24,7 @@ export EDITOR="$text_editor"
 export VISUAL="$text_editor"
 export GIT_EDITOR="$EDITOR"
 export DOTFILES="$HOME/.dotfiles"
-export OBSIDIAN_DIRECTORY="$HOME/obsidian/Personal Vault/"
+export OBSIDIAN_DIRECTORY="$HOME/obsidian/personal-vault"
 
 # Add homebrew to path
 if [[ ! -f $(which brew) ]]; then
