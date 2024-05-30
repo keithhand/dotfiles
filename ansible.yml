@@ -27,6 +27,7 @@
     community.general.homebrew:
       name:
         - homebrew/cask/docker
+        - fd
         - gcc
         - git
         - gh
