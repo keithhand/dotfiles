@@ -11,3 +11,8 @@ git_clone() {
 	output_dir=$GIT_DIRECTORY/$author/$repo
 	git clone -q $url $output_dir
 }
+
+tmux_exit() {
+	tmux switch-client -t "${TMUX_LAST:-$DEFAULT_TMUX_SESSION}"
+	exit
+}

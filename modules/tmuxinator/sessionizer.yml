@@ -4,4 +4,4 @@ name: <%= @settings["name"] %>
 root: <%= @settings["workspace"] %>
 
 windows:
-  - editor: vim && exit
+  - editor: vim && tmux_exit

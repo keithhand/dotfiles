@@ -20,6 +20,8 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 pushd "$selected" 1>/dev/null || exit
+this_tmux="$(tmux display-message -p '#S')"
+tmux set-environment -g TMUX_LAST "$this_tmux"
 if [ -f './.tmuxinator.yml' ]; then
 	tmuxinator local
 else
