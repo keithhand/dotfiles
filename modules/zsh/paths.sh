@@ -13,6 +13,7 @@ addToPathFront() {
 }
 
 addToPathFront "$HOME/.local/bin"
+addToPathFront "$GOPATH/bin"
 addToPath "/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
 addToPath "/mnt/c/Users/rkeit/AppData/Local/Programs/Microsoft VS Code/bin"
 
