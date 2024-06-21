@@ -3,6 +3,11 @@ if [ -z "$TMUX" ]; then
   exec tmux new-session -A -s $DEFAULT_TMUX_SESSION
 fi
 
+# zsh autocompletions
+autoload -Uz compinit
+compdump=$XDG_DATA_HOME/zsh/.zcompdump
+compinit -d "$compdump" &>/dev/null
+
 source "$ZDOTDIR/environment.sh"
 source "$ZDOTDIR/helpers.sh"
 
