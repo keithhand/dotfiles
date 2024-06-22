@@ -1,3 +1,4 @@
 [submodule "modules/nvim"]
 	path = modules/nvim
 	url = ssh://git@github.com/keithhand/nvim
+	branch = main
