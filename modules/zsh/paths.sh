@@ -14,6 +14,7 @@ addToPathFront() {
 
 addToPathFront "$HOME/.local/bin"
 addToPathFront "$GOPATH/bin"
+addToPathFront "$(gem environment gempath)"
 addToPath "/mnt/c/Windows/System32/WindowsPowerShell/v1.0"
 addToPath "/mnt/c/Users/rkeit/AppData/Local/Programs/Microsoft VS Code/bin"
 
