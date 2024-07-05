@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 alias vim="nvim"
+alias cl="clear"
 alias dotFileInstall='$DOTFILES/install'
 alias rz='source $XDG_CONFIG_HOME/zsh/.zshrc'
 alias dp="dotFileInstall && rz"
 alias db='ansible-playbook --ask-become-pass $DOTFILES/ansible.yml && dp'
-alias dc="docker-compose"
+alias dc="docker compose"
 alias tf="terraform"
 alias tfi="tf init"
 alias tfp="tf plan"
