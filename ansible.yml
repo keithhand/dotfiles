@@ -2,60 +2,62 @@
   hosts: localhost
   vars:
     brew_paths:
-    - /home/linuxbrew/.linuxbrew/bin
-
+      - /home/linuxbrew/.linuxbrew/bin
   tasks:
     # Apt installs
-  - name: Install packages with apt
-    when: ansible_distribution == "Debian"
-    become: yes
-    ansible.builtin.apt:
-      name:
-        - curl
-        - docker
-        - gcc
-        - git
-        - nodejs
-        - npm
-        - python3
-        - tmux
-      state: present
-
-    # Homebrew installs
-  - name: Install [mac] packages with brew
-    when: ansible_distribution == "MacOSX"
-    community.general.homebrew:
-      name:
-        - homebrew/cask/docker
-        - fd
-        - gcc
-        - git
-        - gh
-        - lazygit
-        - nodejs
-        - npm
-        - python3
-        - tmux
-        - homebrew/cask/syncthing
-  - name: Install packages with brew
-    community.general.homebrew:
-      name:
-        - bat
-        - commitizen
-        - eza
-        - fzf
-        - kubernetes-cli
-        - lazygit
-        - neovim
-        - pipx
-        - powerlevel10k
-        - thefuck
-        - tmuxinator
-        - zoxide
-        - zsh
-        - zsh-autosuggestions
-        - zsh-fast-syntax-highlighting
-  - name: Install Tmux Plugin Manager
-    git:
-      repo: https://github.com/tmux-plugins/tpm
-      dest: ~/.config/tmux/plugins/tpm
+    - name: Install packages with apt
+      when: ansible_distribution == "Debian"
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - curl
+          - docker
+          - dnsutils
+          - gcc
+          - git
+          - nodejs
+          - npm
+          - python3
+          - tmux
+        state: present
+        # Homebrew installs
+    - name: Install [mac] packages with brew
+      when: ansible_distribution == "MacOSX"
+      community.general.homebrew:
+        name:
+          - homebrew/cask/docker
+          - fd
+          - gcc
+          - git
+          - gh
+          - lazygit
+          - nodejs
+          - npm
+          - python3
+          - tmux
+          - homebrew/cask/syncthing
+    - name: Install packages with brew
+      community.general.homebrew:
+        name:
+          - bat
+          - commitizen
+          - eza
+          - fzf
+          - helm
+          - go
+          - kubernetes-cli
+          - kubectx
+          - lazygit
+          - neovim
+          - pipx
+          - powerlevel10k
+          - thefuck
+          - tmuxinator
+          - zoxide
+          - zsh
+          - zsh-autosuggestions
+          - zsh-fast-syntax-highlighting
+    - name: Install Tmux Plugin Manager
+      git:
+        repo: https://github.com/tmux-plugins/tpm
+        dest: ~/.config/tmux/plugins/tpm
