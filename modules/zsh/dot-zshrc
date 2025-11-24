@@ -1,7 +1,23 @@
-if [ -z "$TMUX" ]; then
-  export DEFAULT_TMUX_SESSION=home
-  exec tmux new-session -A -s $DEFAULT_TMUX_SESSION
-fi
+autoLoadTmux() {
+	ignore_envs=(
+		# vscode terminal
+		"$VSCODE_INJECTION"
+		# jetbrains terminal
+		"$INTELLIJ_ENVIRONMENT_READER"
+		"$JETBRAINS_INTELLIJ_ZSH_DIR"
+		# tmux already running
+		"$TMUX"
+	)
+	for env_var in ${ignore_envs[@]}; do
+		if [[ "$env_var" ]]; then
+			return
+		fi
+	done
+
+	export DEFAULT_TMUX_SESSION=home
+	exec tmux new-session -A -s $DEFAULT_TMUX_SESSION
+}
+autoLoadTmux
 
 # zsh autocompletions
 autoload -Uz compinit
