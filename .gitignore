@@ -1,2 +1,6 @@
 # temporary ignore for migration
 /modules/nvim/lua/old/
+
+# os-specific files
+/modules/home/dot-local/share
+/modules/home/dot-local/state
