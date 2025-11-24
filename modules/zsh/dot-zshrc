@@ -1,23 +1,4 @@
-autoLoadTmux() {
-	ignore_envs=(
-		# vscode terminal
-		"$VSCODE_INJECTION"
-		# jetbrains terminal
-		"$INTELLIJ_ENVIRONMENT_READER"
-		"$JETBRAINS_INTELLIJ_ZSH_DIR"
-		# tmux already running
-		"$TMUX"
-	)
-	for env_var in ${ignore_envs[@]}; do
-		if [[ "$env_var" ]]; then
-			return
-		fi
-	done
-
-	export DEFAULT_TMUX_SESSION=home
-	exec tmux new-session -A -s $DEFAULT_TMUX_SESSION
-}
-autoLoadTmux
+source "$ZDOTDIR/tmux-loader.sh"
 
 # zsh autocompletions
 autoload -Uz compinit
@@ -25,7 +6,6 @@ compdump=$XDG_DATA_HOME/zsh/.zcompdump
 compinit -d "$compdump" &>/dev/null
 
 source "$ZDOTDIR/environment.sh"
-source "$ZDOTDIR/helpers.sh"
 
 for f in "$XDG_CONFIG_HOME"/zsh/plugins/*; do
 	# shellcheck source=/dev/null
