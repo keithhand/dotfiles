@@ -47,6 +47,7 @@
           - go
           - kubernetes-cli
           - kubectx
+          - font-iosevka-term-nerd-font
           - lazygit
           - neovim
           - pipx
